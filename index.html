@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Loja Esportiva Neon</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>👑 Rei da Bola</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="carrinho.html">Carrinho</a>
+    </nav>
+</header>
+
+<!-- BUSCA -->
+<div class="search">
+    <input type="text" id="busca" placeholder="Buscar produtos...">
+</div>
+
+<section class="produtos">
+
+    <div class="produto">
+        <span class="fav" onclick="toggleFav('Camisa', this)">🤍</span>
+        <img src="img/camisa.png" alt="Camisa">
+        <h3>Camisa</h3>
+        <p>R$ 99,90</p>
+        <button onclick="addCarrinho('Camisa', 99.90)">Comprar</button>
+    </div>
+
+    <div class="produto">
+        <span class="fav" onclick="toggleFav('Chuteira', this)">🤍</span>
+        <img src="img/chuteira.png" alt="Chuteira">
+        <h3>Chuteira</h3>
+        <p>R$ 199,90</p>
+        <button onclick="addCarrinho('Chuteira', 199.90)">Comprar</button>
+    </div>
+
+    <div class="produto">
+        <span class="fav" onclick="toggleFav('Bola', this)">🤍</span>
+        <img src="img/bola.png" alt="Bola">
+        <h3>Bola</h3>
+        <p>R$ 79,90</p>
+        <button onclick="addCarrinho('Bola', 79.90)">Comprar</button>
+    </div>
+
+    <div class="produto">
+        <span class="fav" onclick="toggleFav('Meião', this)">🤍</span>
+        <img src="img/meiao.png" alt="Meião">
+        <h3>Meião</h3>
+        <p>R$ 29,90</p>
+        <button onclick="addCarrinho('Meião', 29.90)">Comprar</button>
+    </div>
+
+    <div class="produto">
+        <span class="fav" onclick="toggleFav('Short', this)">🤍</span>
+        <img src="img/short.png" alt="Short">
+        <h3>Short</h3>
+        <p>R$ 59,90</p>
+        <button onclick="addCarrinho('Short', 59.90)">Comprar</button>
+    </div>
+
+</section>
+
+<div id="toast"></div>
+
+<script src="js/script.js"></script>
+
+<!-- BUSCA -->
+<script>
+document.getElementById("busca").addEventListener("keyup", function(){
+    let valor = this.value.toLowerCase();
+    let produtos = document.querySelectorAll(".produto");
+
+    produtos.forEach(p=>{
+        let nome = p.querySelector("h3").innerText.toLowerCase();
+        p.style.display = nome.includes(valor) ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>

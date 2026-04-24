@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Carrinho</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Carrinho</h1>
+    <a href="index.html">Voltar</a>
+</header>
+
+<ul id="lista"></ul>
+
+<h2 id="total"></h2>
+
+<button onclick="finalizarCompra()">Finalizar Compra</button>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+function render(){
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    let total = 0;
+
+    carrinho.forEach((item,i)=>{
+        let li = document.createElement("li");
+
+        li.innerHTML = `
+        <strong>${item.nome}</strong>
+        <div>
+            <button onclick="menos(${i})">-</button>
+            ${item.qtd}
+            <button onclick="mais(${i})">+</button>
+        </div>
+        R$ ${(item.preco * item.qtd).toFixed(2)}
+        <button onclick="remover(${i})">❌</button>
+        `;
+
+        lista.appendChild(li);
+
+        total += item.preco * item.qtd;
+    });
+
+    document.getElementById("total").innerText =
+        "Total: R$ " + total.toFixed(2);
+}
+
+function mais(i){
+    carrinho[i].qtd++;
+    salvar();
+}
+
+function menos(i){
+    if(carrinho[i].qtd > 1){
+        carrinho[i].qtd--;
+    } else {
+        carrinho.splice(i,1);
+    }
+    salvar();
+}
+
+function remover(i){
+    carrinho.splice(i,1);
+    salvar();
+}
+
+function salvar(){
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    render();
+}
+
+function finalizarCompra(){
+    alert("Compra finalizada 🎉");
+    carrinho = [];
+    salvar();
+}
+
+render();
+</script>
+
+</body>
+</html>

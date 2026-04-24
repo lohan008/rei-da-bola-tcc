@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Contato - Rei da Bola</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>📩 Rei da Bola</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<section class="contato">
+
+    <h2>Fale conosco</h2>
+
+    <input type="text" id="nome" placeholder="Seu nome">
+    <input type="email" id="email" placeholder="Seu email">
+    <textarea id="msg" placeholder="Mensagem"></textarea>
+
+    <button onclick="enviar()">Enviar</button>
+
+</section>
+
+<div id="toast"></div>
+
+<script src="js/script.js"></script>
+
+<script>
+function enviar(){
+    let nome = document.getElementById("nome").value;
+
+    if(nome === ""){
+        alert("Preencha o nome");
+        return;
+    }
+
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("msg").value = "";
+
+    toast("Mensagem enviada com sucesso ✅");
+}
+</script>
+
+</body>
+</html>
