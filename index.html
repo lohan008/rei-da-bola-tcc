@@ -14,7 +14,7 @@
         <a href="carrinho.html">Carrinho</a>
     </nav>
 </header>
-
+<h2 id="bemvindo"></h2>
 <!-- BUSCA -->
 <div class="search">
     <input type="text" id="busca" placeholder="Buscar produtos...">
@@ -80,6 +80,14 @@ document.getElementById("busca").addEventListener("keyup", function(){
     });
 });
 </script>
-
+<script>
+    let usuario = localStorage.getItem("usuario");
+    
+    if(usuario){
+        document.getElementById("bemvindo").innerText =
+        "Bem-vindo, " + usuario + " 👑";
+    }
+    
+    </script>
 </body>
 </html>
