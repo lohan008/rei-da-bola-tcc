@@ -2,64 +2,86 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Loja Esportiva Neon</title>
+<title>Rei da Bola</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
     <h1>👑 Rei da Bola</h1>
+    <h2 id="bemvindo"></h2>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="carrinho.html">Carrinho</a>
     </nav>
 </header>
-<h2 id="bemvindo"></h2>
-<!-- BUSCA -->
-<div class="search">
+
+<!-- 🔍 BUSCA -->
+<div style="text-align:center; margin-top:10px;">
     <input type="text" id="busca" placeholder="Buscar produtos...">
 </div>
 
+<!-- 📂 CATEGORIAS -->
+<div class="categorias">
+
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('camisa')">Camisas</button>
+    <button onclick="filtrar('bola')">Bolas</button>
+    <button onclick="filtrar('chuteira')">Chuteiras</button>
+    <button onclick="filtrar('luva')">luvas</button>
+
+</div>
+
+<!-- 🛒 PRODUTOS -->
 <section class="produtos">
 
-    <div class="produto">
+    <div class="produto" data-category="camisa">
         <span class="fav" onclick="toggleFav('Camisa', this)">🤍</span>
-        <img src="img/camisa.png" alt="Camisa">
+        <img src="img/camisa.png">
         <h3>Camisa</h3>
         <p>R$ 99,90</p>
         <button onclick="addCarrinho('Camisa', 99.90)">Comprar</button>
     </div>
 
-    <div class="produto">
+    <div class="produto" data-category="chuteira">
         <span class="fav" onclick="toggleFav('Chuteira', this)">🤍</span>
-        <img src="img/chuteira.png" alt="Chuteira">
+        <img src="img/chuteira.png">
         <h3>Chuteira</h3>
         <p>R$ 199,90</p>
         <button onclick="addCarrinho('Chuteira', 199.90)">Comprar</button>
     </div>
 
-    <div class="produto">
+    <div class="produto" data-category="bola">
         <span class="fav" onclick="toggleFav('Bola', this)">🤍</span>
-        <img src="img/bola.png" alt="Bola">
-        <h3>Bola</h3>
+        <img src="img/bola.png">
+        <h3>Bola de Futebol</h3>
         <p>R$ 79,90</p>
         <button onclick="addCarrinho('Bola', 79.90)">Comprar</button>
     </div>
 
-    <div class="produto">
+    <div class="produto" data-category="camisa">
         <span class="fav" onclick="toggleFav('Meião', this)">🤍</span>
-        <img src="img/meiao.png" alt="Meião">
+        <img src="img/meiao.png">
         <h3>Meião</h3>
         <p>R$ 29,90</p>
         <button onclick="addCarrinho('Meião', 29.90)">Comprar</button>
     </div>
 
-    <div class="produto">
+    <div class="produto" data-category="camisa">
         <span class="fav" onclick="toggleFav('Short', this)">🤍</span>
-        <img src="img/short.png" alt="Short">
+        <img src="img/short.png">
         <h3>Short</h3>
         <p>R$ 59,90</p>
         <button onclick="addCarrinho('Short', 59.90)">Comprar</button>
+    </div>
+
+    <div class="produto" data-category="goleiro">
+        <span class="fav" onclick="toggleFav('Luva de Goleiro', this)">🤍</span>
+        <img src="img/luva.png">
+        <h3>Luva de Goleiro</h3>
+        <p>R$ 89,90</p>
+        <button onclick="addCarrinho('Luva de Goleiro', 89.90)">Comprar</button>
     </div>
 
 </section>
@@ -68,7 +90,17 @@
 
 <script src="js/script.js"></script>
 
-<!-- BUSCA -->
+<!-- 👤 USUÁRIO -->
+<script>
+let usuario = localStorage.getItem("usuario");
+
+if(usuario){
+    document.getElementById("bemvindo").innerText =
+    "Bem-vindo, " + usuario + " 👑";
+}
+</script>
+
+<!-- 🔍 BUSCA -->
 <script>
 document.getElementById("busca").addEventListener("keyup", function(){
     let valor = this.value.toLowerCase();
@@ -80,14 +112,25 @@ document.getElementById("busca").addEventListener("keyup", function(){
     });
 });
 </script>
+
+<!-- 📂 FILTRO CATEGORIAS -->
 <script>
-    let usuario = localStorage.getItem("usuario");
-    
-    if(usuario){
-        document.getElementById("bemvindo").innerText =
-        "Bem-vindo, " + usuario + " 👑";
-    }
-    
-    </script>
+function filtrar(categoria){
+    let produtos = document.querySelectorAll(".produto");
+
+    produtos.forEach(produto => {
+
+        if(categoria === "todos"){
+            produto.style.display = "block";
+        } else {
+            let cat = produto.getAttribute("data-category");
+
+            produto.style.display = (cat === categoria) ? "block" : "none";
+        }
+
+    });
+}
+</script>
+
 </body>
 </html>
