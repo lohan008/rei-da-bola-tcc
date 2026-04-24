@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Login - Rei da Bola</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-box">
+
+    <h1>👑 Rei da Bola</h1>
+    <p>Faça login para entrar</p>
+
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="logar()">Entrar</button>
+
+    <p id="erro"></p>
+
+</div>
+
+<script>
+function logar(){
+    let senha = document.getElementById("senha").value;
+
+    if(senha === "123"){
+        window.location.href = "index.html";
+    } else {
+        document.getElementById("erro").innerText = "Senha incorreta ❌";
+    }
+}
+</script>
+
+</body>
+</html>
