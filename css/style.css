@@ -267,3 +267,40 @@ body {
     text-align: center;
     margin-top: 10px;
 }
+.categorias {
+    text-align: center;
+    margin: 15px;
+}
+
+.categorias button {
+    background: #121826;
+    color: #00aaff;
+    border: 1px solid #00aaff;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.categorias button:hover {
+    background: #00aaff;
+    color: black;
+}
+.banner {
+    background: linear-gradient(90deg, #000, #0a1aff);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.banner h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.banner p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
