@@ -30,6 +30,8 @@
     <button onclick="filtrar('bola')">Bolas</button>
     <button onclick="filtrar('chuteira')">Chuteiras</button>
     <button onclick="filtrar('luva')">luvas</button>
+    <button onclick="filtrar('short')">Shorts</button>
+    <button onclick="filtrar('meiao')">Meião</button>
 
 </div>
 
@@ -60,7 +62,7 @@
         <button onclick="addCarrinho('Bola', 79.90)">Comprar</button>
     </div>
 
-    <div class="produto" data-category="camisa">
+    <div class="produto" data-category="meiao">
         <span class="fav" onclick="toggleFav('Meião', this)">🤍</span>
         <img src="img/meiao.png">
         <h3>Meião</h3>
@@ -68,7 +70,7 @@
         <button onclick="addCarrinho('Meião', 29.90)">Comprar</button>
     </div>
 
-    <div class="produto" data-category="camisa">
+    <div class="produto" data-category="short">
         <span class="fav" onclick="toggleFav('Short', this)">🤍</span>
         <img src="img/short.png">
         <h3>Short</h3>
@@ -76,13 +78,14 @@
         <button onclick="addCarrinho('Short', 59.90)">Comprar</button>
     </div>
 
-    <div class="produto" data-category="goleiro">
+    <div class="produto" data-category="luva">
         <span class="fav" onclick="toggleFav('Luva de Goleiro', this)">🤍</span>
         <img src="img/luva.png">
         <h3>Luva de Goleiro</h3>
         <p>R$ 89,90</p>
         <button onclick="addCarrinho('Luva de Goleiro', 89.90)">Comprar</button>
     </div>
+    
     <div class="produto" data-category="chuteira">
         <span class="fav" onclick="toggleFav('Nike Phantom', this)">🤍</span>
         <img src="img/nike-phantom.png">
@@ -114,6 +117,19 @@
         <p>R$ 129,90</p>
     
         <button onclick="addCarrinho('Camisa PSG', 129.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="camisa">
+        <span class="fav" onclick="toggleFav('Camisa Barcelona', this)">🤍</span>
+    
+        <img src="img/camisa-barcelona.png" alt="Camisa Barcelona">
+    
+        <h3>Camisa Barcelona</h3>
+    
+        <p>R$ 139,90</p>
+    
+        <button onclick="addCarrinho('Camisa Barcelona', 139.90)">
             Comprar
         </button>
     </div>
