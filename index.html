@@ -32,6 +32,7 @@
     <button onclick="filtrar('luva')">luvas</button>
     <button onclick="filtrar('short')">Shorts</button>
     <button onclick="filtrar('meiao')">Meião</button>
+    <button onclick="filtrar('acessorio')">Acessórios</button>
 
 </div>
 
@@ -39,9 +40,9 @@
 <section class="produtos">
 
     <div class="produto" data-category="camisa">
-        <span class="fav" onclick="toggleFav('Camisa', this)">🤍</span>
-        <img src="img/camisa.png">
-        <h3>Camisa</h3>
+        <span class="fav" onclick="toggleFav('Camisa palmeiras', this)">🤍</span>
+        <img src="img/camisa-palmeiras.png">
+        <h3>Camisa palmeiras</h3>
         <p>R$ 99,90</p>
         <button onclick="addCarrinho('Camisa', 99.90)">Comprar</button>
     </div>
@@ -55,9 +56,9 @@
     </div>
 
     <div class="produto" data-category="bola">
-        <span class="fav" onclick="toggleFav('Bola', this)">🤍</span>
-        <img src="img/bola.png">
-        <h3>Bola de Futebol</h3>
+        <span class="fav" onclick="toggleFav('Bola adidas', this)">🤍</span>
+        <img src="img/bola-adidas.png">
+        <h3>Bola adidas</h3>
         <p>R$ 79,90</p>
         <button onclick="addCarrinho('Bola', 79.90)">Comprar</button>
     </div>
@@ -235,6 +236,84 @@
         <h3>Meião Puma</h3>
         <p>R$ 34,90</p>
         <button onclick="addCarrinho('Meião Puma', 34.90)">Comprar</button>
+    </div>
+    <div class="produto" data-category="luva">
+        <span class="fav" onclick="toggleFav('Luva Adidas', this)">🤍</span>
+    
+        <img src="img/luva-adidas.png" alt="Luva Adidas">
+    
+        <h3>Luva Adidas</h3>
+    
+        <p>R$ 129,90</p>
+    
+        <button onclick="addCarrinho('Luva Adidas', 129.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="luva">
+        <span class="fav" onclick="toggleFav('Luva Nike', this)">🤍</span>
+    
+        <img src="img/luva-nike.png" alt="Luva Nike">
+    
+        <h3>Luva Nike</h3>
+    
+        <p>R$ 139,90</p>
+    
+        <button onclick="addCarrinho('Luva Nike', 139.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Bolsa Nike Preta', this)">🤍</span>
+    
+        <img src="img/bolsa-nike1.png" alt="Bolsa Nike">
+    
+        <h3>Bolsa Nike Preta</h3>
+    
+        <p>R$ 149,90</p>
+    
+        <button onclick="addCarrinho('Bolsa Nike Preta', 149.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Bolsa Nike Esportiva', this)">🤍</span>
+    
+        <img src="img/bolsa-nike2.png" alt="Bolsa Nike">
+    
+        <h3>Bolsa Nike Esportiva</h3>
+    
+        <p>R$ 159,90</p>
+    
+        <button onclick="addCarrinho('Bolsa Nike Esportiva', 159.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Bolsa Adidas Clássica', this)">🤍</span>
+    
+        <img src="img/bolsa-adidas1.png" alt="Bolsa Adidas">
+    
+        <h3>Bolsa Adidas Clássica</h3>
+    
+        <p>R$ 139,90</p>
+    
+        <button onclick="addCarrinho('Bolsa Adidas Clássica', 139.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Bolsa Adidas Esportiva', this)">🤍</span>
+    
+        <img src="img/bolsa-adidas2.png" alt="Bolsa Adidas">
+    
+        <h3>Bolsa Adidas Esportiva</h3>
+    
+        <p>R$ 169,90</p>
+    
+        <button onclick="addCarrinho('Bolsa Adidas Esportiva', 169.90)">
+            Comprar
+        </button>
     </div>
     
 </section>
