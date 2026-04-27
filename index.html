@@ -16,7 +16,10 @@
         <a href="carrinho.html">Carrinho</a>
     </nav>
 </header>
-
+<div class="banner">
+    <h2>🔥 Ofertas da Semana</h2>
+    <p>Descontos em camisas, chuteiras e acessórios</p>
+</div>
 <!-- 🔍 BUSCA -->
 <div style="text-align:center; margin-top:10px;">
     <input type="text" id="busca" placeholder="Buscar produtos...">
@@ -342,6 +345,32 @@
         <h3>Caneleira Profissional</h3>
         <p>R$ 69,90</p>
         <button onclick="addCarrinho('Caneleira Profissional', 69.90)">Comprar</button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Manguito Nike', this)">🤍</span>
+    
+        <img src="img/manguito-nike.png" alt="Manguito Nike">
+    
+        <h3>Manguito Nike</h3>
+    
+        <p>R$ 39,90</p>
+    
+        <button onclick="addCarrinho('Manguito Nike', 39.90)">
+            Comprar
+        </button>
+    </div>
+    <div class="produto" data-category="acessorio">
+        <span class="fav" onclick="toggleFav('Manguito Adidas', this)">🤍</span>
+    
+        <img src="img/manguito-adidas.png" alt="Manguito Adidas">
+    
+        <h3>Manguito Adidas</h3>
+    
+        <p>R$ 35,90</p>
+    
+        <button onclick="addCarrinho('Manguito Adidas', 35.90)">
+            Comprar
+        </button>
     </div>
     
 </section>
