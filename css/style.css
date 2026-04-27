@@ -304,3 +304,61 @@ body {
     margin: 5px 0 0;
     font-size: 14px;
 }
+select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    background: #0a1aff;
+    color: white;
+}
+.pagamento-box {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.pagamento-box h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.pagamento-box select {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    width: 250px;
+    text-align: center;
+}
+.finalizar-btn {
+    background: red;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.finalizar-btn:hover {
+    background: darkred;
+}
+#mensagem-compra {
+    position: fixed;
+    top: -100px;
+    right: 20px;
+    background: #0a1aff;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 0 10px #0a1aff, 0 0 20px #0a1aff;
+    z-index: 999;
+    transition: 0.5s;
+}
+
+/* quando aparecer */
+#mensagem-compra.show {
+    top: 20px;
+}

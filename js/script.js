@@ -38,3 +38,40 @@ function toast(msg){
 
     setTimeout(()=> t.style.opacity = 0, 1500);
 }
+function finalizarCompra() {
+    let mensagem = document.getElementById("mensagem-compra");
+
+msg.innerText = "Compra finalizada com sucesso via " + pagamento + " 👑";
+
+// mostra (desliza)
+msg.classList.add("show");
+
+// esconde depois
+setTimeout(() => {
+    msg.classList.remove("show");
+}, 3000);
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    let pagamento = document.getElementById("pagamento").value;
+
+    if(carrinho.length === 0){
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    if(pagamento === ""){
+        alert("Selecione uma forma de pagamento!");
+        return;
+    }
+
+    let msg = document.getElementById("mensagem-compra");
+
+msg.innerText = "Compra finalizada com sucesso via " + pagamento + " 👑";
+msg.style.display = "block";
+
+setTimeout(() => {
+    msg.style.display = "none";
+}, 3000);
+
+    localStorage.removeItem("carrinho");
+    location.reload();
+}

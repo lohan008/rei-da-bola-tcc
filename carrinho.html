@@ -15,9 +15,22 @@
 <ul id="lista"></ul>
 
 <h2 id="total"></h2>
+<h3>Forma de Pagamento</h3>
 
-<button onclick="finalizarCompra()">Finalizar Compra</button>
+<div class="pagamento-box">
+    <h3>💳 Forma de Pagamento</h3>
 
+    <select id="pagamento">
+        <option value="">Selecione</option>
+        <option value="PIX">PIX</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Boleto">Boleto</option>
+    </select>
+</div>
+
+<button class="finalizar-btn" onclick="finalizarCompra()">
+    Finalizar Compra
+</button>
 <script>
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
@@ -83,5 +96,6 @@ function finalizarCompra(){
 render();
 </script>
 
+<div id="mensagem-compra"></div>
 </body>
 </html>
