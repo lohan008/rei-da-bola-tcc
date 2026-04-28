@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,6 +16,7 @@
 <ul id="lista"></ul>
 
 <h2 id="total"></h2>
+
 <h3>Forma de Pagamento</h3>
 
 <div class="pagamento-box">
@@ -31,6 +33,7 @@
 <button class="finalizar-btn" onclick="finalizarCompra()">
     Finalizar Compra
 </button>
+
 <script>
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
@@ -41,16 +44,47 @@ function render(){
     let total = 0;
 
     carrinho.forEach((item,i)=>{
+
+        // evita erro com itens antigos
+        if(!item.qtd) item.qtd = 1;
+        if(!item.tamanho) item.tamanho = "";
+
         let li = document.createElement("li");
 
         li.innerHTML = `
         <strong>${item.nome}</strong>
+
         <div>
             <button onclick="menos(${i})">-</button>
             ${item.qtd}
             <button onclick="mais(${i})">+</button>
         </div>
+
+        <!-- TAMANHO -->
+        <select onchange="mudarTamanho(${i}, this.value)">
+            <option value="">Tamanho</option>
+            <option ${item.tamanho=="P"?"selected":""}>P</option>
+            <option ${item.tamanho=="M"?"selected":""}>M</option>
+            <option ${item.tamanho=="G"?"selected":""}>G</option>
+            <option ${item.tamanho=="GG"?"selected":""}>GG</option>
+            <option ${item.tamanho=="34"?"selected":""}>34</option>
+            <option ${item.tamanho=="35"?"selected":""}>35</option>
+            <option ${item.tamanho=="36"?"selected":""}>36</option>
+            <option ${item.tamanho=="37"?"selected":""}>37</option>
+            <option ${item.tamanho=="38"?"selected":""}>38</option>
+            <option ${item.tamanho=="39"?"selected":""}>39</option>
+            <option ${item.tamanho=="40"?"selected":""}>40</option>
+            <option ${item.tamanho=="41"?"selected":""}>41</option>
+            <option ${item.tamanho=="42"?"selected":""}>42</option>
+            <option ${item.tamanho=="43"?"selected":""}>43</option>
+            <option ${item.tamanho=="44"?"selected":""}>44</option>
+            <option ${item.tamanho=="45"?"selected":""}>45</option>
+        </select>
+
+        <br>
+
         R$ ${(item.preco * item.qtd).toFixed(2)}
+
         <button onclick="remover(${i})">❌</button>
         `;
 
@@ -61,6 +95,11 @@ function render(){
 
     document.getElementById("total").innerText =
         "Total: R$ " + total.toFixed(2);
+}
+
+function mudarTamanho(i, valor){
+    carrinho[i].tamanho = valor;
+    salvar();
 }
 
 function mais(i){
@@ -88,7 +127,15 @@ function salvar(){
 }
 
 function finalizarCompra(){
-    alert("Compra finalizada 🎉");
+    let pagamento = document.getElementById("pagamento").value;
+
+    if(pagamento === ""){
+        alert("Escolha uma forma de pagamento!");
+        return;
+    }
+
+    alert("Compra finalizada com " + pagamento + " 🎉");
+
     carrinho = [];
     salvar();
 }
@@ -97,5 +144,7 @@ render();
 </script>
 
 <div id="mensagem-compra"></div>
+
 </body>
 </html>
+```
