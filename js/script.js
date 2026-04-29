@@ -1,21 +1,16 @@
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-// CARRINHO
+// 🛒 NOVA FUNÇÃO (IR PRA TELA DE TAMANHO)
 function addCarrinho(nome, preco){
-    let item = carrinho.find(p=>p.nome===nome);
+    let produto = {nome, preco};
 
-    if(item){
-        item.qtd++;
-    } else {
-        carrinho.push({nome, preco, qtd:1});
-    }
+    localStorage.setItem("produtoTemp", JSON.stringify(produto));
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    toast("Adicionado ao carrinho 🛒");
+    window.location.href = "tamanho.html";
 }
 
-// FAVORITOS
+// ❤️ FAVORITOS
 function toggleFav(nome, el){
     if(favoritos.includes(nome)){
         favoritos = favoritos.filter(f=>f!==nome);
@@ -28,7 +23,7 @@ function toggleFav(nome, el){
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
 
-// TOAST
+// 🔔 TOAST
 function toast(msg){
     let t = document.getElementById("toast");
     if(!t) return;
@@ -38,18 +33,10 @@ function toast(msg){
 
     setTimeout(()=> t.style.opacity = 0, 1500);
 }
+
+// 💳 FINALIZAR COMPRA
 function finalizarCompra() {
-    let mensagem = document.getElementById("mensagem-compra");
 
-msg.innerText = "Compra finalizada com sucesso via " + pagamento + " 👑";
-
-// mostra (desliza)
-msg.classList.add("show");
-
-// esconde depois
-setTimeout(() => {
-    msg.classList.remove("show");
-}, 3000);
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     let pagamento = document.getElementById("pagamento").value;
 
@@ -65,12 +52,12 @@ setTimeout(() => {
 
     let msg = document.getElementById("mensagem-compra");
 
-msg.innerText = "Compra finalizada com sucesso via " + pagamento + " 👑";
-msg.style.display = "block";
+    msg.innerText = "Compra finalizada com sucesso via " + pagamento + " 👑";
+    msg.style.display = "block";
 
-setTimeout(() => {
-    msg.style.display = "none";
-}, 3000);
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 3000);
 
     localStorage.removeItem("carrinho");
     location.reload();
