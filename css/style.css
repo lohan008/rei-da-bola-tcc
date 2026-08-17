@@ -344,35 +344,24 @@ select {
 #mensagem-compra.show {
     top: 20px;
 }
-.banner{
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.banner img{
-    width: 100%;
-    height: auto;
-    display: block;
-}
 /* ========================================
    BANNER PRINCIPAL - REI DA BOLA
    ======================================== */
 
 .banner {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    width: 95%;
+    max-width: 1500px;
+    margin: 20px auto 30px;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .banner img {
     width: 100%;
-    height: 280px;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
     display: block;
 }
-
+.banner {
 /* Espaço entre o banner e a busca */
 .banner + .busca,
 .banner + #busca,
@@ -394,24 +383,4 @@ select {
 /* Produtos */
 #produtos {
     margin-top: 20px;
-}
-/* ========================================
-   BANNER - FORMATO RETANGULAR
-   ======================================== */
-
-.banner {
-    width: 95%;
-    aspect-ratio: 7 / 1;
-    margin: 20px auto 0;
-    padding: 0;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.banner img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
 }
