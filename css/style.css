@@ -480,3 +480,22 @@ select {
         width: 80%;
     }
 }
+/* ===== AJUSTE FINAL DO BANNER ===== */
+
+.banner {
+    width: 90%;
+    max-width: 1500px;
+    margin: 20px auto 30px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.banner img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+}
