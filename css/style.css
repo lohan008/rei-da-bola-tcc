@@ -1,23 +1,19 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     margin: 0;
     background: #0a0d14;
     color: white;
 }
 
-/* ================================
-   HEADER
-   ================================ */
-
+/* HEADER */
 header {
     background: #0b0f1a;
     padding: 15px;
     text-align: center;
     border-bottom: 2px solid #00aaff;
-    box-shadow: 0 0 12px rgba(0, 170, 255, 0.4);
+    box-shadow: 0 0 12px rgba(0,170,255,0.4);
     position: sticky;
     top: 0;
-    z-index: 100;
 }
 
 header h1 {
@@ -37,10 +33,7 @@ header a:hover {
     text-shadow: 0 0 8px #00aaff;
 }
 
-/* ================================
-   BUSCA
-   ================================ */
-
+/* BUSCA */
 .search {
     text-align: center;
     margin: 15px;
@@ -51,60 +44,13 @@ header a:hover {
     width: 250px;
     border-radius: 8px;
     border: none;
-    margin-top: 10px;
 }
 
-/* ================================
-   BANNER
-   ================================ */
-
-.banner {
-    width: 95%;
-    max-width: 1500px;
-    margin: 20px auto 30px;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ================================
-   CATEGORIAS
-   ================================ */
-
-.categorias {
-    text-align: center;
-    margin: 25px 15px;
-}
-
-.categorias button {
-    background: #121826;
-    color: #00aaff;
-    border: 1px solid #00aaff;
-    padding: 8px 12px;
-    margin: 5px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.categorias button:hover {
-    background: #00aaff;
-    color: black;
-}
-
-/* ================================
-   PRODUTOS
-   ================================ */
-
+/* PRODUTOS */
 .produtos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .produto {
@@ -114,18 +60,17 @@ header a:hover {
     width: 180px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0,170,255,0.15);
     position: relative;
     transition: 0.3s;
 }
 
 .produto:hover {
     transform: scale(1.06);
-    box-shadow: 0 0 18px rgba(0, 170, 255, 0.5);
+    box-shadow: 0 0 18px rgba(0,170,255,0.5);
 }
 
-/* IMAGEM DOS PRODUTOS */
-
+/* IMAGEM (NOVO VISUAL PROFISSIONAL) */
 .produto img {
     width: 100%;
     height: 130px;
@@ -135,15 +80,11 @@ header a:hover {
 }
 
 /* ZOOM NA IMAGEM */
-
 .produto:hover img {
     transform: scale(1.05);
 }
 
-/* ================================
-   BOTÃO DOS PRODUTOS
-   ================================ */
-
+/* BOTÃO */
 .produto button {
     background: #00aaff;
     color: black;
@@ -155,26 +96,15 @@ header a:hover {
     border-radius: 6px;
 }
 
-.produto button:hover {
-    box-shadow: 0 0 10px #00aaff;
-}
-
-/* ================================
-   FAVORITOS
-   ================================ */
-
+/* FAVORITO */
 .fav {
     position: absolute;
     right: 10px;
     top: 8px;
     cursor: pointer;
-    z-index: 2;
 }
 
-/* ================================
-   TOAST
-   ================================ */
-
+/* TOAST */
 #toast {
     position: fixed;
     bottom: 20px;
@@ -186,13 +116,9 @@ header a:hover {
     border-radius: 6px;
     opacity: 0;
     transition: 0.3s;
-    z-index: 999;
 }
 
-/* ================================
-   CARRINHO
-   ================================ */
-
+/* CARRINHO */
 #lista {
     list-style: none;
     padding: 0;
@@ -208,7 +134,7 @@ header a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0,170,255,0.15);
 }
 
 #lista button {
@@ -223,18 +149,13 @@ header a:hover {
     text-align: center;
     font-size: 22px;
 }
-
-/* ================================
-   CONTATO
-   ================================ */
-
 .contato {
     max-width: 500px;
     margin: 40px auto;
     background: #121826;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0, 170, 255, 0.2);
+    box-shadow: 0 0 12px rgba(0,170,255,0.2);
     text-align: center;
 }
 
@@ -251,7 +172,6 @@ header a:hover {
     border-radius: 6px;
     background: #0a0d14;
     color: white;
-    box-sizing: border-box;
 }
 
 .contato textarea {
@@ -273,11 +193,13 @@ header a:hover {
 .contato button:hover {
     box-shadow: 0 0 10px #00aaff;
 }
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0a0d14;
+}
 
-/* ================================
-   LOGIN
-   ================================ */
-
+/* CENTRALIZA PERFEITO NO MEIO */
 .login-box {
     position: absolute;
     top: 50%;
@@ -289,20 +211,23 @@ header a:hover {
     background: #121826;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0,170,255,0.5);
 }
 
+/* TÍTULO */
 .login-box h1 {
     color: #00aaff;
     text-shadow: 0 0 10px #00aaff;
     margin-bottom: 5px;
 }
 
+/* TEXTO */
 .login-box p {
     color: #ccc;
     font-size: 14px;
 }
 
+/* INPUTS */
 .login-box input {
     width: 90%;
     padding: 10px;
@@ -314,6 +239,7 @@ header a:hover {
     outline: none;
 }
 
+/* BOTÃO */
 .login-box button {
     width: 100%;
     padding: 10px;
@@ -330,26 +256,36 @@ header a:hover {
     box-shadow: 0 0 12px #00aaff;
 }
 
+/* ERRO */
 #erro {
     color: red;
     margin-top: 10px;
 }
-
-/* ================================
-   BEM-VINDO
-   ================================ */
-
 #bemvindo {
     color: #00aaff;
     text-shadow: 0 0 8px #00aaff;
     text-align: center;
     margin-top: 10px;
 }
+.categorias {
+    text-align: center;
+    margin: 15px;
+}
 
-/* ================================
-   SELECT
-   ================================ */
+.categorias button {
+    background: #121826;
+    color: #00aaff;
+    border: 1px solid #00aaff;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
+.categorias button:hover {
+    background: #00aaff;
+    color: black;
+   
 select {
     padding: 10px;
     margin: 10px 0;
@@ -358,11 +294,6 @@ select {
     background: #0a1aff;
     color: white;
 }
-
-/* ================================
-   PAGAMENTO
-   ================================ */
-
 .pagamento-box {
     text-align: center;
     margin: 30px 0;
@@ -381,11 +312,6 @@ select {
     width: 250px;
     text-align: center;
 }
-
-/* ================================
-   FINALIZAR COMPRA
-   ================================ */
-
 .finalizar-btn {
     background: red;
     color: white;
@@ -400,11 +326,6 @@ select {
 .finalizar-btn:hover {
     background: darkred;
 }
-
-/* ================================
-   MENSAGEM DA COMPRA
-   ================================ */
-
 #mensagem-compra {
     position: fixed;
     top: -100px;
@@ -419,83 +340,21 @@ select {
     transition: 0.5s;
 }
 
+/* quando aparecer */
 #mensagem-compra.show {
     top: 20px;
 }
-
-/* ================================
-   RESPONSIVIDADE
-   ================================ */
-
-@media (max-width: 768px) {
-
-    .banner {
-        width: 96%;
-        margin: 15px auto 20px;
-    }
-
-    .produto {
-        width: 160px;
-    }
-
-    .produto img {
-        height: 120px;
-    }
-
-    #busca {
-        width: 80%;
-    }
-
-    .categorias button {
-        padding: 7px 10px;
-        margin: 3px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    header {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    .banner {
-        width: 96%;
-        border-radius: 8px;
-    }
-
-    .produto {
-        width: 140px;
-        margin: 6px;
-    }
-
-    .produto img {
-        height: 110px;
-    }
-
-    .login-box {
-        width: 80%;
-    }
-}
-/* ===== AJUSTE FINAL DO BANNER ===== */
+ /* ===== BANNER PRINCIPAL ===== */
 
 .banner {
-    width: 90%;
-    max-width: 1500px;
-    margin: 20px auto 30px;
+    width: 100%;
+    margin: 0;
     padding: 0;
     overflow: hidden;
-    border-radius: 12px;
-    box-sizing: border-box;
 }
 
 .banner img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
-    box-sizing: border-box;
-}
+}   
