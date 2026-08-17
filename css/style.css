@@ -354,8 +354,9 @@ select {
     height: auto;
     display: block;
 }
-
-/* ===== BANNER PRINCIPAL ===== */
+/* ========================================
+   BANNER PRINCIPAL - REI DA BOLA
+   ======================================== */
 
 .banner {
     width: 100%;
@@ -366,6 +367,31 @@ select {
 
 .banner img {
     width: 100%;
-    height: auto;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
     display: block;
+}
+
+/* Espaço entre o banner e a busca */
+.banner + .busca,
+.banner + #busca,
+.banner + .barra-busca {
+    margin-top: 35px;
+}
+
+/* Busca */
+#busca {
+    margin-top: 35px;
+}
+
+/* Categorias */
+.categorias {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* Produtos */
+#produtos {
+    margin-top: 20px;
 }
