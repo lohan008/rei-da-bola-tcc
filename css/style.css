@@ -372,3 +372,19 @@ select {
     height: auto;
     display: block;
 }
+
+/* ===== BANNER PRINCIPAL ===== */
+
+.banner {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
