@@ -285,25 +285,7 @@ body {
 .categorias button:hover {
     background: #00aaff;
     color: black;
-}
-.banner {
-    background: linear-gradient(90deg, #000, #0a1aff);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-}
-
-.banner h2 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.banner p {
-    margin: 5px 0 0;
-    font-size: 14px;
-}
+    
 select {
     padding: 10px;
     margin: 10px 0;
@@ -386,5 +368,4 @@ select {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
 }
