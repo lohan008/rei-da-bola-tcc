@@ -1,1 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finalizar Compra - Rei da Bola</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .checkout-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .checkout-titulo {
+            text-align: center;
+            color: #00aaff;
+            text-shadow: 0 0 10px #00aaff;
+            margin-bottom: 30px;
+        }
+
+        .checkout-box {
+            background: #121826;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,170,255,0.2);
+        }
+
+        .checkout-box h2 {
+            color: #00aaff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .produto-checkout {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #263044;
+        }
+
+        .produto-checkout img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .produto-info {
+            flex: 1;
+        }
+
+        .produto-info h3 {
+            margin: 0 0 8px;
+        }
+
+        .produto-info p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .campo input,
+        .campo select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 7px;
+            background: #0a0d14;
+            color: white;
+            outline: none;
+        }
+
+        .linha {
+            display: flex;
+            gap: 15px;
+        }
+
+        .linha .campo {
+            flex: 1;
+        }
+
+        .resumo {
+            text-align: right;
+        }
+
+        .resumo p {
+            font-size: 17px;
+        }
+
+        .total-final {
+            color: #00aaff;
+            font-size: 26px !important;
+            font-weight: bold;
+        }
+
+        .finalizar-checkout {
+            width: 100%;
+            padding: 15px;
+            background: #00aaff;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .finalizar-checkout:hover {
+            box-shadow: 0 0 15px #00aaff;
+        }
+
+        .voltar-carrinho {
+            display: block;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            margin: 20px 0;
+        }
+
+        .voltar-carrinho:hover {
+            color: #00aaff;
+        }
+
+        #pedido-confirmado {
+            display: none;
+            text-align: center;
+            background: #121826;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,170,255,0.3);
+        }
+
+        #pedido-confirmado h2 {
+            color: #00aaff;
+            font-size: 30px;
+        }
+
+        #pedido-confirmado p {
+            color: #ddd;
+            font-size: 17px;
+        }
+
+        @media (max-width: 600px) {
+
+            .linha {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .produto-checkout img {
+                width: 75px;
+                height: 75px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Rei da Bola</h1>
+
+    <a href="index.html">Início</a>
+
+    <a href="carrinho.html">Carrinho</a>
+
+</header>
+
+
+<div class="checkout-container">
+
+    <h1 class="checkout-titulo">
+        Finalizar Compra
+    </h1>
+
+
+    <!-- RESUMO DO PEDIDO -->
+
+    <div class="checkout-box">
+
+        <h2>🛒 Resumo do pedido</h2>
+
+        <div id="produtos-checkout"></div>
+
+    </div>
+
+
+    <!-- DADOS DE ENTREGA -->
+
+    <div class="checkout-box">
+
+        <h2>📦 Dados de entrega</h2>
+
+
+        <div class="campo">
+
+            <label>Nome completo</label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+            >
+
+        </div>
+
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label>CEP</label>
+
+                <input
+                    type="text"
+                    id="cep"
+                    placeholder="00000-000"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>Número</label>
+
+                <input
+                    type="text"
+                    id="numero"
+                    placeholder="Número"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Endereço</label>
+
+            <input
+                type="text"
+                id="endereco"
+                placeholder="Rua, avenida..."
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Complemento</label>
+
+            <input
+                type="text"
+                id="complemento"
+                placeholder="Apartamento, casa..."
+            >
+
+        </div>
+
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label>Cidade</label>
+
+                <input
+                    type="text"
+                    id="cidade"
+                    placeholder="Cidade"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>Estado</label>
+
+                <select id="estado">
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option>SP</option>
+                    <option>RJ</option>
+                    <option>MG</option>
+                    <option>PR</option>
+                    <option>SC</option>
+                    <option>RS</option>
+                    <option>BA</option>
+                    <option>PE</option>
+                    <option>CE</option>
+                    <option>GO</option>
+                    <option>ES</option>
+                    <option>DF</option>
+                    <option>PA</option>
+                    <option>AM</option>
+                    <option>MA</option>
+                    <option>PB</option>
+                    <option>RN</option>
+                    <option>AL</option>
+                    <option>SE</option>
+                    <option>PI</option>
+                    <option>MT</option>
+                    <option>MS</option>
+                    <option>RO</option>
+                    <option>AC</option>
+                    <option>AP</option>
+                    <option>RR</option>
+                    <option>TO</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAGAMENTO -->
+
+    <div class="checkout-box">
+
+        <h2>💳 Forma de pagamento</h2>
+
+        <div class="campo">
+
+            <select id="pagamento">
+
+                <option value="">
+                    Selecione uma forma de pagamento
+                </option>
+
+                <option value="PIX">
+                    PIX
+                </option>
+
+                <option value="Cartão">
+                    Cartão
+                </option>
+
+                <option value="Boleto">
+                    Boleto
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESUMO FINAL -->
+
+    <div class="checkout-box resumo">
+
+        <h2>🧾 Resumo final</h2>
+
+        <p>
+            Produtos:
+            <strong id="subtotal">
+                R$ 0,00
+            </strong>
+        </p>
+
+        <p>
+            Frete:
+            <strong id="frete">
+                R$ 0,00
+            </strong>
+        </p>
+
+        <p class="total-final">
+            Total:
+            <span id="total-final">
+                R$ 0,00
+            </span>
+        </p>
+
+
+        <button
+            class="finalizar-checkout"
+            onclick="finalizarPedido()"
+        >
+            Confirmar pedido
+        </button>
+
+    </div>
+
+
+    <a
+        class="voltar-carrinho"
+        href="carrinho.html"
+    >
+        ← Voltar para o carrinho
+    </a>
+
+
+    <!-- PEDIDO CONFIRMADO -->
+
+    <div id="pedido-confirmado">
+
+        <h2>
+            🎉 Pedido realizado!
+        </h2>
+
+        <p>
+            Sua compra foi realizada com sucesso.
+        </p>
+
+        <p>
+            Este pedido é uma
+            <strong>simulação</strong>
+            para o projeto Rei da Bola.
+        </p>
+
+        <p>
+            Obrigado por comprar conosco! ⚽👑
+        </p>
+
+
+        <a
+            class="voltar-carrinho"
+            href="index.html"
+        >
+            Voltar para a loja
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let carrinho =
+    JSON.parse(localStorage.getItem("carrinho")) || [];
+
+
+let produtosDiv =
+    document.getElementById("produtos-checkout");
+
+
+let subtotal = 0;
+
+
+/* MOSTRAR PRODUTOS */
+
+if (carrinho.length === 0) {
+
+    produtosDiv.innerHTML = `
+        <p>Seu carrinho está vazio.</p>
+    `;
+
+} else {
+
+    carrinho.forEach(function(item) {
+
+        let quantidade = item.qtd || 1;
+
+        let preco =
+            Number(item.preco) || 0;
+
+        let valor =
+            preco * quantidade;
+
+        subtotal += valor;
+
+        produtosDiv.innerHTML += `
+
+            <div class="produto-checkout">
+
+                ${
+                    item.imagem
+                    ?
+                    `<img
+                        src="${item.imagem}"
+                        alt="${item.nome}"
+                    >`
+                    :
+                    ""
+                }
+
+                <div class="produto-info">
+
+                    <h3>
+                        ${item.nome}
+                    </h3>
+
+                    <p>
+                        Tamanho:
+                        ${item.tamanho || "Não informado"}
+                    </p>
+
+                    <p>
+                        Quantidade:
+                        ${quantidade}
+                    </p>
+
+                    <p>
+                        Valor:
+                        R$ ${valor
+                            .toFixed(2)
+                            .replace(".", ",")}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* FRETE */
+
+let frete =
+    carrinho.length > 0 ? 15 : 0;
+
+
+let total =
+    subtotal + frete;
+
+
+/* MOSTRAR VALORES */
+
+document.getElementById("subtotal").innerText =
+    "R$ " +
+    subtotal.toFixed(2).replace(".", ",");
+
+
+document.getElementById("frete").innerText =
+    "R$ " +
+    frete.toFixed(2).replace(".", ",");
+
+
+document.getElementById("total-final").innerText =
+    "R$ " +
+    total.toFixed(2).replace(".", ",");
+
+
+/* FINALIZAR */
+
+function finalizarPedido() {
+
+    let nome =
+        document.getElementById("nome").value.trim();
+
+    let cep =
+        document.getElementById("cep").value.trim();
+
+    let endereco =
+        document.getElementById("endereco").value.trim();
+
+    let numero =
+        document.getElementById("numero").value.trim();
+
+    let cidade =
+        document.getElementById("cidade").value.trim();
+
+    let estado =
+        document.getElementById("estado").value;
+
+    let pagamento =
+        document.getElementById("pagamento").value;
+
+
+    if (carrinho.length === 0) {
+
+        alert("Seu carrinho está vazio!");
+
+        return;
+
+    }
+
+
+    if (nome === "") {
+
+        alert("Digite seu nome.");
+
+        return;
+
+    }
+
+
+    if (cep === "") {
+
+        alert("Digite seu CEP.");
+
+        return;
+
+    }
+
+
+    if (endereco === "") {
+
+        alert("Digite seu endereço.");
+
+        return;
+
+    }
+
+
+    if (numero === "") {
+
+        alert("Digite o número.");
+
+        return;
+
+    }
+
+
+    if (cidade === "") {
+
+        alert("Digite sua cidade.");
+
+        return;
+
+    }
+
+
+    if (estado === "") {
+
+        alert("Selecione seu estado.");
+
+        return;
+
+    }
+
+
+    if (pagamento === "") {
+
+        alert(
+            "Selecione uma forma de pagamento."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Pedido confirmado com sucesso! 👑\n\n" +
+        "Pagamento: " +
+        pagamento +
+        "\nTotal: R$ " +
+        total.toFixed(2).replace(".", ",")
+    );
+
+
+    localStorage.removeItem("carrinho");
+
+
+    document
+        .querySelector(".checkout-titulo")
+        .style.display = "none";
+
+
+    document
+        .querySelectorAll(".checkout-box")
+        .forEach(function(box) {
+
+            box.style.display = "none";
+
+        });
+
+
+    document
+        .querySelector(".voltar-carrinho")
+        .style.display = "none";
+
+
+    document
+        .getElementById("pedido-confirmado")
+        .style.display = "block";
+
+}
+
+</script>
+
+</body>
+
+</html>
