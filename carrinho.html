@@ -131,19 +131,20 @@ function salvar(){
 }
 
 function finalizarCompra(){
-    let pagamento = document.getElementById("pagamento").value;
 
-    if(pagamento === ""){
-        alert("Escolha uma forma de pagamento!");
+    let carrinhoAtual =
+        JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    if(carrinhoAtual.length === 0){
+
+        alert("Seu carrinho está vazio!");
+
         return;
     }
 
-    alert("Compra finalizada com " + pagamento + " 🎉");
-
-    carrinho = [];
-    salvar();
+    window.location.href = "checkout.html";
 }
-
+    
 render();
 </script>
 
