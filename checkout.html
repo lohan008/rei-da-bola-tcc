@@ -630,37 +630,31 @@ document.getElementById("total-final").innerText =
     "R$ " +
     total.toFixed(2).replace(".", ",");
 
+    /* ========================================
+   CUPOM ATUAL
+   ======================================== */
 
-/* FINALIZAR */
+let cupomAplicado = "";
+
+
+/* ========================================
+   FINALIZAR PEDIDO
+   ======================================== */
 
 function finalizarPedido() {
 
-    let nome =
-        document.getElementById("nome").value.trim();
-
-    let cep =
-        document.getElementById("cep").value.trim();
-
-    let endereco =
-        document.getElementById("endereco").value.trim();
-
-    let numero =
-        document.getElementById("numero").value.trim();
-
-    let cidade =
-        document.getElementById("cidade").value.trim();
-
-    let estado =
-        document.getElementById("estado").value;
-
-    let pagamento =
-        document.getElementById("pagamento").value;
+    let nome = document.getElementById("nome").value.trim();
+    let cep = document.getElementById("cep").value.trim();
+    let endereco = document.getElementById("endereco").value.trim();
+    let numero = document.getElementById("numero").value.trim();
+    let cidade = document.getElementById("cidade").value.trim();
+    let estado = document.getElementById("estado").value;
+    let pagamento = document.getElementById("pagamento").value;
 
 
     if (carrinho.length === 0) {
 
         alert("Seu carrinho está vazio!");
-
         return;
 
     }
@@ -669,7 +663,6 @@ function finalizarPedido() {
     if (nome === "") {
 
         alert("Digite seu nome.");
-
         return;
 
     }
@@ -678,7 +671,6 @@ function finalizarPedido() {
     if (cep === "") {
 
         alert("Digite seu CEP.");
-
         return;
 
     }
@@ -687,7 +679,6 @@ function finalizarPedido() {
     if (endereco === "") {
 
         alert("Digite seu endereço.");
-
         return;
 
     }
@@ -696,7 +687,6 @@ function finalizarPedido() {
     if (numero === "") {
 
         alert("Digite o número.");
-
         return;
 
     }
@@ -705,7 +695,6 @@ function finalizarPedido() {
     if (cidade === "") {
 
         alert("Digite sua cidade.");
-
         return;
 
     }
@@ -714,7 +703,6 @@ function finalizarPedido() {
     if (estado === "") {
 
         alert("Selecione seu estado.");
-
         return;
 
     }
@@ -722,21 +710,76 @@ function finalizarPedido() {
 
     if (pagamento === "") {
 
-        alert(
-            "Selecione uma forma de pagamento."
-        );
-
+        alert("Selecione uma forma de pagamento.");
         return;
 
     }
 
+
+    /* ========================================
+       CALCULAR DESCONTO
+       ======================================== */
+
+    let descontoFinal = 0;
+
+    let freteFinal = frete;
+
+
+    /* FRETE GRÁTIS */
+
+    if (
+        cupomAplicado === "FRETEGRATIS" ||
+        cupomAplicado === "PRIMEIRACOMPRA"
+    ) {
+
+        freteFinal = 0;
+
+    }
+
+
+    /* DESCONTOS */
+
+    if (cupomAplicado === "REIDABOLA5") {
+
+        descontoFinal = subtotal * 0.05;
+
+    }
+
+    else if (cupomAplicado === "REIDABOLA10") {
+
+        descontoFinal = subtotal * 0.10;
+
+    }
+
+    else if (cupomAplicado === "REIDABOLA20") {
+
+        descontoFinal = subtotal * 0.20;
+
+    }
+
+    else if (cupomAplicado === "REIDABOLA50") {
+
+        descontoFinal = subtotal * 0.50;
+
+    }
+
+
+    /* TOTAL FINAL */
+
+    let totalFinal =
+        subtotal + freteFinal - descontoFinal;
+
+
+    /* ========================================
+       CONFIRMAÇÃO
+       ======================================== */
 
     alert(
         "Pedido confirmado com sucesso! 👑\n\n" +
         "Pagamento: " +
         pagamento +
         "\nTotal: R$ " +
-        total.toFixed(2).replace(".", ",")
+        totalFinal.toFixed(2).replace(".", ",")
     );
 
 
@@ -765,6 +808,280 @@ function finalizarPedido() {
     document
         .getElementById("pedido-confirmado")
         .style.display = "block";
+
+}
+
+
+/* ========================================
+   APLICAR CUPOM
+   ======================================== */
+
+function aplicarCupom() {
+
+    let campo =
+        document.getElementById("cupom");
+
+    let mensagem =
+        document.getElementById("mensagem-cupom");
+
+    let cupom =
+        campo.value.trim().toUpperCase();
+
+
+    if (cupom === "") {
+
+        mensagem.innerText =
+            "Digite um cupom.";
+
+        mensagem.style.color =
+            "#ff4444";
+
+        return;
+
+    }
+
+
+    /* FRETE GRÁTIS */
+
+    if (cupom === "FRETEGRATIS") {
+
+        cupomAplicado =
+            "FRETEGRATIS";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! Frete grátis.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* PRIMEIRA COMPRA */
+
+    if (cupom === "PRIMEIRACOMPRA") {
+
+        cupomAplicado =
+            "PRIMEIRACOMPRA";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! Frete grátis na primeira compra.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* 5% */
+
+    if (cupom === "REIDABOLA5") {
+
+        cupomAplicado =
+            "REIDABOLA5";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! 5% de desconto.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* 10% */
+
+    if (cupom === "REIDABOLA10") {
+
+        cupomAplicado =
+            "REIDABOLA10";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! 10% de desconto.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* 20% */
+
+    if (cupom === "REIDABOLA20") {
+
+        cupomAplicado =
+            "REIDABOLA20";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! 20% de desconto.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* 50% */
+
+    if (cupom === "REIDABOLA50") {
+
+        cupomAplicado =
+            "REIDABOLA50";
+
+        mensagem.innerText =
+            "✅ Cupom aplicado! 50% de desconto.";
+
+        mensagem.style.color =
+            "#00ff88";
+
+        atualizarResumo();
+
+        return;
+
+    }
+
+
+    /* CUPOM INVÁLIDO */
+
+    cupomAplicado = "";
+
+    mensagem.innerText =
+        "❌ Cupom inválido.";
+
+    mensagem.style.color =
+        "#ff4444";
+
+    atualizarResumo();
+
+}
+
+
+/* ========================================
+   ATUALIZAR RESUMO
+   ======================================== */
+
+function atualizarResumo() {
+
+    let desconto = 0;
+
+    let novoFrete = frete;
+
+
+    /* FRETE GRÁTIS */
+
+    if (
+        cupomAplicado === "FRETEGRATIS" ||
+        cupomAplicado === "PRIMEIRACOMPRA"
+    ) {
+
+        novoFrete = 0;
+
+    }
+
+
+    /* DESCONTO 5% */
+
+    if (cupomAplicado === "REIDABOLA5") {
+
+        desconto =
+            subtotal * 0.05;
+
+    }
+
+
+    /* DESCONTO 10% */
+
+    else if (cupomAplicado === "REIDABOLA10") {
+
+        desconto =
+            subtotal * 0.10;
+
+    }
+
+
+    /* DESCONTO 20% */
+
+    else if (cupomAplicado === "REIDABOLA20") {
+
+        desconto =
+            subtotal * 0.20;
+
+    }
+
+
+    /* DESCONTO 50% */
+
+    else if (cupomAplicado === "REIDABOLA50") {
+
+        desconto =
+            subtotal * 0.50;
+
+    }
+
+
+    /* TOTAL */
+
+    let novoTotal =
+        subtotal + novoFrete - desconto;
+
+
+    /* FRETE */
+
+    document
+        .getElementById("frete")
+        .innerText =
+        "R$ " +
+        novoFrete
+            .toFixed(2)
+            .replace(".", ",");
+
+
+    /* DESCONTO */
+
+    let elementoDesconto =
+        document.getElementById("desconto");
+
+
+    if (elementoDesconto) {
+
+        elementoDesconto.innerText =
+            "R$ " +
+            desconto
+                .toFixed(2)
+                .replace(".", ",");
+
+    }
+
+
+    /* TOTAL FINAL */
+
+    document
+        .getElementById("total-final")
+        .innerText =
+        "R$ " +
+        novoTotal
+            .toFixed(2)
+            .replace(".", ",");
 
 }
 
