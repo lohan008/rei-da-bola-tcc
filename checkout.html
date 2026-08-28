@@ -1144,6 +1144,24 @@ function atualizarResumo() {
 
     }
 
+        let elementoPrazo =
+    document.getElementById("prazo-entrega");
+
+if (elementoPrazo) {
+
+    if (prazoEntrega !== "") {
+
+        elementoPrazo.innerText =
+            prazoEntrega;
+
+    } else {
+
+        elementoPrazo.innerText =
+            "Informe o estado e a cidade";
+
+    }
+
+}
 
     /* DESCONTO 5% */
 
