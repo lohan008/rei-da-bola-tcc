@@ -304,7 +304,7 @@
 
                 <label>Estado</label>
 
-                <select id="estado">
+               <select id="estado" onchange="calcularFrete()">
 
                     <option value="">
                         Selecione
@@ -604,12 +604,151 @@ if (carrinho.length === 0) {
 }
 
 
-/* FRETE */
+/* ========================================
+   FRETE POR REGIÃO - REI DA BOLA
+   ======================================== */
 
-let frete =
-    carrinho.length > 0 ? 15 : 0;
+let frete = 0;
+
+let prazoEntrega = "";
+
+function calcularFrete() {
+
+    let estado =
+        document.getElementById("estado").value;
+
+    let cidade =
+        document.getElementById("cidade").value
+            .trim()
+            .toUpperCase();
 
 
+    /* SÃO PAULO */
+
+    if (estado === "SP") {
+
+        /* CAPITAL */
+
+        if (cidade === "SÃO PAULO" || cidade === "SAO PAULO") {
+
+            frete = 9.90;
+            prazoEntrega = "1 a 3 dias úteis";
+
+        }
+
+        /* OUTRAS CIDADES DE SP */
+
+        else {
+
+            frete = 12.90;
+            prazoEntrega = "2 a 4 dias úteis";
+
+        }
+
+    }
+
+
+    /* SUDESTE */
+
+    else if (
+        estado === "RJ" ||
+        estado === "MG" ||
+        estado === "ES"
+    ) {
+
+        frete = 18.90;
+        prazoEntrega = "3 a 6 dias úteis";
+
+    }
+
+
+    /* SUL */
+
+    else if (
+        estado === "PR" ||
+        estado === "SC"
+    ) {
+
+        frete = 22.90;
+        prazoEntrega = "4 a 7 dias úteis";
+
+    }
+
+    else if (estado === "RS") {
+
+        frete = 27.90;
+        prazoEntrega = "5 a 8 dias úteis";
+
+    }
+
+
+    /* CENTRO-OESTE */
+
+    else if (
+        estado === "DF" ||
+        estado === "GO" ||
+        estado === "MS" ||
+        estado === "MT"
+    ) {
+
+        frete = 29.90;
+        prazoEntrega = "5 a 9 dias úteis";
+
+    }
+
+
+    /* NORDESTE */
+
+    else if (
+        estado === "BA" ||
+        estado === "SE" ||
+        estado === "AL" ||
+        estado === "PE" ||
+        estado === "PB" ||
+        estado === "RN" ||
+        estado === "CE" ||
+        estado === "PI" ||
+        estado === "MA"
+    ) {
+
+        frete = 34.90;
+        prazoEntrega = "7 a 12 dias úteis";
+
+    }
+
+
+    /* NORTE */
+
+    else if (
+        estado === "AC" ||
+        estado === "AP" ||
+        estado === "AM" ||
+        estado === "PA" ||
+        estado === "RO" ||
+        estado === "RR" ||
+        estado === "TO"
+    ) {
+
+        frete = 39.90;
+        prazoEntrega = "8 a 15 dias úteis";
+
+    }
+
+
+    /* SEM ESTADO */
+
+    else {
+
+        frete = 0;
+        prazoEntrega = "";
+
+    }
+
+
+    atualizarResumo();
+
+}
+    
 let total =
     subtotal + frete;
 
