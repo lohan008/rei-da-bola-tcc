@@ -174,6 +174,257 @@
 
         }
 
+  /* ========================================
+   PAGAMENTO
+   ======================================== */
+
+.pagamento-subtitulo {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+
+.opcoes-pagamento {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+.opcao-pagamento {
+    flex: 1;
+    min-width: 180px;
+    padding: 20px;
+    background: #0a0d14;
+    color: white;
+    border: 2px solid #263044;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.opcao-pagamento:hover {
+    border-color: #00aaff;
+    box-shadow: 0 0 15px rgba(0,170,255,0.3);
+    transform: translateY(-3px);
+}
+
+
+.opcao-pagamento.selecionado {
+    border-color: #00aaff;
+    box-shadow: 0 0 18px rgba(0,170,255,0.5);
+}
+
+
+.icone-pagamento {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.opcao-pagamento strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+
+.opcao-pagamento small {
+    display: block;
+    color: #aaa;
+}
+
+
+/* ========================================
+   CONTEÚDO DO PAGAMENTO
+   ======================================== */
+
+.conteudo-pagamento {
+    margin-top: 25px;
+}
+
+
+/* ========================================
+   CARTÃO VISUAL
+   ======================================== */
+
+.cartao-visual {
+    max-width: 420px;
+    height: 230px;
+    margin: 0 auto 25px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #063b5c
+    );
+
+    border: 1px solid #00aaff;
+
+    box-shadow:
+        0 0 20px rgba(0,170,255,0.35);
+
+    position: relative;
+}
+
+
+.cartao-logo {
+    text-align: right;
+    color: #00aaff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.cartao-chip {
+    font-size: 32px;
+    margin-top: 25px;
+}
+
+
+.cartao-numero {
+    margin-top: 18px;
+    font-size: 21px;
+    letter-spacing: 3px;
+}
+
+
+.cartao-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #ddd;
+}
+
+
+/* ========================================
+   CAMPOS DO CARTÃO
+   ======================================== */
+
+.form-cartao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+.form-cartao .campo-completo {
+    grid-column: 1 / -1;
+}
+
+
+.form-cartao input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #0a0d14;
+    color: white;
+
+    outline: none;
+}
+
+
+.form-cartao label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   PIX
+   ======================================== */
+
+.pix-box {
+    text-align: center;
+    padding: 25px;
+    background: #0a0d14;
+    border-radius: 12px;
+    border: 1px solid #263044;
+}
+
+
+.qr-code-simulacao {
+    width: 170px;
+    height: 170px;
+    margin: 20px auto;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            white 0,
+            white 5px,
+            black 5px,
+            black 10px
+        );
+
+    border: 10px solid white;
+}
+
+
+/* ========================================
+   BOLETO
+   ======================================== */
+
+.boleto-box {
+    background: #0a0d14;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #263044;
+}
+
+
+.boleto-documento {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.boleto-linha {
+    height: 8px;
+    margin: 8px 0;
+    background: repeating-linear-gradient(
+        90deg,
+        black 0,
+        black 3px,
+        white 3px,
+        white 6px
+    );
+}
+
+
+@media (max-width: 600px) {
+
+    .opcoes-pagamento {
+        flex-direction: column;
+    }
+
+    .form-cartao {
+        grid-template-columns: 1fr;
+    }
+
+    .form-cartao .campo-completo {
+        grid-column: auto;
+    }
+
+    .cartao-visual {
+        height: 210px;
+    }
+
+}
+        
     </style>
 
 </head>
@@ -408,37 +659,83 @@
 
     <!-- PAGAMENTO -->
 
-    <div class="checkout-box">
+  <!-- PAGAMENTO -->
 
-        <h2>💳 Forma de pagamento</h2>
+<div class="checkout-box pagamento-area">
 
-        <div class="campo">
+    <h2>💳 Forma de pagamento</h2>
 
-            <select id="pagamento">
+    <p class="pagamento-subtitulo">
+        Escolha como deseja pagar sua compra.
+    </p>
 
-                <option value="">
-                    Selecione uma forma de pagamento
-                </option>
+    <div class="opcoes-pagamento">
 
-                <option value="PIX">
-                    PIX
-                </option>
+        <button
+            type="button"
+            class="opcao-pagamento"
+            onclick="selecionarPagamento('PIX')"
+        >
+            <span class="icone-pagamento">🟢</span>
 
-                <option value="Cartão">
-                    Cartão
-                </option>
+            <strong>PIX</strong>
 
-                <option value="Boleto">
-                    Boleto
-                </option>
+            <small>
+                Aprovação imediata
+            </small>
+        </button>
 
-            </select>
 
-        </div>
+        <button
+            type="button"
+            class="opcao-pagamento"
+            onclick="selecionarPagamento('Cartão')"
+        >
+            <span class="icone-pagamento">💳</span>
+
+            <strong>Cartão</strong>
+
+            <small>
+                Crédito ou débito
+            </small>
+        </button>
+
+
+        <button
+            type="button"
+            class="opcao-pagamento"
+            onclick="selecionarPagamento('Boleto')"
+        >
+            <span class="icone-pagamento">📄</span>
+
+            <strong>Boleto</strong>
+
+            <small>
+                Pagamento bancário
+            </small>
+        </button>
 
     </div>
 
 
+    <!-- VALOR ESCOLHIDO PELO USUÁRIO -->
+
+    <input
+        type="hidden"
+        id="pagamento"
+        value=""
+    >
+
+
+    <!-- CONTEÚDO DO PAGAMENTO -->
+
+    <div
+        id="conteudo-pagamento"
+        class="conteudo-pagamento"
+    ></div>
+
+</div>
+    
     <!-- RESUMO FINAL -->
 
     <div class="checkout-box resumo">
@@ -1249,6 +1546,281 @@ if (elementoPrazo) {
 
 }
 
+ /* ========================================
+   SELECIONAR FORMA DE PAGAMENTO
+   ======================================== */
+
+function selecionarPagamento(tipo) {
+
+    let pagamento =
+        document.getElementById("pagamento");
+
+    let conteudo =
+        document.getElementById("conteudo-pagamento");
+
+
+    pagamento.value = tipo;
+
+
+    /* REMOVER SELEÇÃO ANTERIOR */
+
+    document
+        .querySelectorAll(".opcao-pagamento")
+        .forEach(function(botao) {
+
+            botao.classList.remove("selecionado");
+
+        });
+
+
+    /* SELECIONAR BOTÃO */
+
+    document
+        .querySelectorAll(".opcao-pagamento")
+        .forEach(function(botao) {
+
+            if (
+                botao.innerText
+                    .toLowerCase()
+                    .includes(tipo.toLowerCase())
+            ) {
+
+                botao.classList.add("selecionado");
+
+            }
+
+        });
+
+
+    /* ========================================
+       CARTÃO
+       ======================================== */
+
+    if (tipo === "Cartão") {
+
+        conteudo.innerHTML = `
+
+            <div class="cartao-visual">
+
+                <div class="cartao-logo">
+                    REI DA BOLA
+                </div>
+
+                <div class="cartao-chip">
+                    💳
+                </div>
+
+                <div class="cartao-numero">
+                    •••• •••• •••• ••••
+                </div>
+
+                <div class="cartao-info">
+
+                    <span>
+                        NOME DO CLIENTE
+                    </span>
+
+                    <span>
+                        00/00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-cartao">
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Número do cartão
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="0000 0000 0000 0000"
+                    >
+
+                </div>
+
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Nome no cartão
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Nome do titular"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Validade
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="MM/AA"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        CVV
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="000"
+                    >
+
+                </div>
+
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Parcelas
+                    </label>
+
+                    <select>
+
+                        <option>
+                            1x sem juros
+                        </option>
+
+                        <option>
+                            2x sem juros
+                        </option>
+
+                        <option>
+                            3x sem juros
+                        </option>
+
+                        <option>
+                            4x sem juros
+                        </option>
+
+                        <option>
+                            5x sem juros
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* ========================================
+       PIX
+       ======================================== */
+
+    else if (tipo === "PIX") {
+
+        conteudo.innerHTML = `
+
+            <div class="pix-box">
+
+                <h3>
+                    🟢 Pagamento via PIX
+                </h3>
+
+                <p>
+                    Escaneie o QR Code para realizar
+                    o pagamento.
+                </p>
+
+                <div class="qr-code-simulacao"></div>
+
+                <p>
+                    <strong>
+                        QR Code de simulação
+                    </strong>
+                </p>
+
+                <p style="color:#aaa;">
+                    Este pagamento é apenas uma
+                    simulação para o projeto.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* ========================================
+       BOLETO
+       ======================================== */
+
+    else if (tipo === "Boleto") {
+
+        conteudo.innerHTML = `
+
+            <div class="boleto-box">
+
+                <h3>
+                    📄 Boleto bancário
+                </h3>
+
+                <p>
+                    O boleto será gerado após
+                    a confirmação do pedido.
+                </p>
+
+
+                <div class="boleto-documento">
+
+                    <strong>
+                        REI DA BOLA
+                    </strong>
+
+                    <hr>
+
+                    <p>
+                        Pagamento de pedido
+                    </p>
+
+                    <div class="boleto-linha"></div>
+
+                    <div class="boleto-linha"></div>
+
+                    <div class="boleto-linha"></div>
+
+                    <p>
+                        Vencimento: 3 dias úteis
+                    </p>
+
+                    <strong>
+                        Documento de simulação
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+}
+    
 </script>
 
 </body>
