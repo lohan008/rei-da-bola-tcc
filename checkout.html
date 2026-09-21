@@ -424,6 +424,421 @@
     }
 
 }
+
+   /* ============================= */
+/* PAGAMENTO */
+/* ============================= */
+
+.subtitulo-pagamento {
+    color: #b8dfff;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.opcoes-pagamento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.opcao-pagamento {
+    background: #07111f;
+    border: 2px solid #173452;
+    border-radius: 14px;
+    padding: 22px 15px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    min-height: 130px;
+}
+
+.opcao-pagamento:hover {
+    border-color: #00aaff;
+    box-shadow: 0 0 18px rgba(0, 170, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.opcao-pagamento.ativo {
+    border-color: #00aaff;
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.7);
+    background: #082849;
+}
+
+.icone-pagamento {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.opcao-pagamento strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.opcao-pagamento small {
+    color: #a9dfff;
+}
+
+.pagamento-select {
+    display: none;
+}
+
+
+/* ============================= */
+/* ÁREA DE DETALHES */
+/* ============================= */
+
+#pagamento-detalhes {
+    margin-top: 25px;
+}
+
+
+/* ============================= */
+/* CARTÃO */
+/* ============================= */
+
+.pagamento-cartao {
+    background: #061321;
+    border: 1px solid #00aaff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.18);
+}
+
+.cartao-visual {
+    width: min(100%, 520px);
+    height: 280px;
+    margin: 0 auto 30px;
+    padding: 28px;
+    box-sizing: border-box;
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #062442,
+        #0a5680,
+        #06182c
+    );
+
+    border: 1px solid #00aaff;
+
+    box-shadow:
+        0 0 25px rgba(0, 170, 255, 0.35),
+        inset 0 0 25px rgba(0, 170, 255, 0.08);
+
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.cartao-logo {
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #00aaff;
+}
+
+.cartao-chip {
+    font-size: 34px;
+    margin-top: 35px;
+}
+
+.cartao-numero {
+    font-size: 25px;
+    letter-spacing: 4px;
+    margin-top: 20px;
+}
+
+.cartao-informacoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 28px;
+}
+
+.cartao-nome {
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.cartao-validade {
+    font-size: 17px;
+}
+
+.aviso-simulacao {
+    text-align: center;
+    background: rgba(0, 170, 255, 0.08);
+    border: 1px solid #175b80;
+    color: #9fdcff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* ============================= */
+/* CAMPOS DO CARTÃO */
+/* ============================= */
+
+.campos-cartao {
+    display: grid;
+    gap: 15px;
+}
+
+.campo-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo-pagamento label {
+    font-weight: bold;
+}
+
+.campo-pagamento input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    border-radius: 9px;
+    border: 1px solid #1d4c70;
+    background: #050d18;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.campo-pagamento input:focus {
+    border-color: #00aaff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.25);
+}
+
+.linha-cartao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+/* ============================= */
+/* PIX */
+/* ============================= */
+
+.pagamento-pix {
+    background: #061321;
+    border: 1px solid #00aaff;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+}
+
+.pix-titulo {
+    color: #00c8ff;
+    font-size: 25px;
+}
+
+.pix-qr {
+    width: 210px;
+    height: 210px;
+    margin: 25px auto;
+
+    background:
+        linear-gradient(90deg, #000 10px, transparent 10px) 0 0 / 25px 25px,
+        linear-gradient(#000 10px, transparent 10px) 0 0 / 25px 25px,
+        white;
+
+    border: 12px solid white;
+    box-sizing: border-box;
+}
+
+.pix-valor {
+    font-size: 23px;
+    font-weight: bold;
+    color: #00aaff;
+    margin: 20px 0;
+}
+
+.pix-chave {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    background: #050d18;
+    color: white;
+    border: 1px solid #1d4c70;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+.botao-copiar {
+    background: #006eff;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botao-copiar:hover {
+    background: #008cff;
+}
+
+
+/* ============================= */
+/* BOLETO */
+/* ============================= */
+
+.pagamento-boleto {
+    background: #061321;
+    border: 1px solid #00aaff;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.boleto {
+    background: white;
+    color: #111;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.boleto-topo {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #222;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.boleto-logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.boleto-simulacao {
+    font-size: 12px;
+    color: #555;
+}
+
+.boleto-dados {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.boleto-dados div {
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+.boleto-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.boleto-valor {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.codigo-barras {
+    height: 75px;
+    margin: 20px 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #111 0px,
+            #111 2px,
+            white 2px,
+            white 5px,
+            #111 5px,
+            #111 7px,
+            white 7px,
+            white 10px
+        );
+
+    border: 1px solid #222;
+}
+
+.linha-digitavel {
+    text-align: center;
+    font-family: monospace;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.boleto-aviso {
+    background: #e8f4ff;
+    border: 1px solid #9bd5ff;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+/* ============================= */
+/* COMPROVANTE FINAL */
+/* ============================= */
+
+.comprovante-pagamento {
+    background: #071525;
+    border: 2px solid #00aaff;
+    border-radius: 18px;
+    padding: 30px;
+    margin: 25px auto;
+    max-width: 750px;
+    box-shadow: 0 0 30px rgba(0, 170, 255, 0.25);
+}
+
+.comprovante-pagamento h2 {
+    color: #00aaff;
+    text-align: center;
+}
+
+.comprovante-linha {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #21405b;
+    padding: 13px 0;
+}
+
+.comprovante-destaque {
+    font-size: 22px;
+    color: #00c8ff;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+
+    .opcoes-pagamento {
+        grid-template-columns: 1fr;
+    }
+
+    .cartao-visual {
+        height: 240px;
+    }
+
+    .cartao-numero {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .linha-cartao {
+        grid-template-columns: 1fr;
+    }
+
+    .boleto-dados {
+        grid-template-columns: 1fr;
+    }
+}
         
     </style>
 
@@ -716,7 +1131,31 @@
         </button>
 
     </div>
+    
+<select id="pagamento" class="pagamento-select">
 
+        <option value="">
+            Selecione uma forma de pagamento
+        </option>
+
+        <option value="PIX">
+            PIX
+        </option>
+
+        <option value="Cartão">
+            Cartão
+        </option>
+
+        <option value="Boleto">
+            Boleto
+        </option>
+
+    </select>
+
+
+    <div id="pagamento-detalhes"></div>
+
+</div>
 
     <!-- VALOR ESCOLHIDO PELO USUÁRIO -->
 
@@ -1819,6 +2258,334 @@ function selecionarPagamento(tipo) {
 
     }
 
+}
+
+ function selecionarPagamento(tipo) {
+
+    document.getElementById("pagamento").value = tipo;
+
+    let botoes = document.querySelectorAll(".opcao-pagamento");
+
+    botoes.forEach(function(botao) {
+        botao.classList.remove("ativo");
+    });
+
+    if (tipo === "PIX") {
+        botoes[0].classList.add("ativo");
+    }
+
+    if (tipo === "Cartão") {
+        botoes[1].classList.add("ativo");
+    }
+
+    if (tipo === "Boleto") {
+        botoes[2].classList.add("ativo");
+    }
+
+    mostrarPagamento();
+}
+ function mostrarPagamento() {
+
+    let pagamento = document.getElementById("pagamento").value;
+
+    let area = document.getElementById("pagamento-detalhes");
+
+    if (!area) {
+        return;
+    }
+
+    if (pagamento === "Cartão") {
+
+        area.innerHTML = `
+
+            <div class="pagamento-cartao">
+
+                <div class="cartao-visual">
+
+                    <div class="cartao-logo">
+                        REI DA BOLA 👑
+                    </div>
+
+                    <div class="cartao-chip">
+                        💳
+                    </div>
+
+                    <div class="cartao-numero"
+                         id="cartao-numero-visual">
+                        •••• •••• •••• ••••
+                    </div>
+
+                    <div class="cartao-informacoes">
+
+                        <div class="cartao-nome"
+                             id="cartao-nome-visual">
+                            NOME DO CLIENTE
+                        </div>
+
+                        <div class="cartao-validade"
+                             id="cartao-validade-visual">
+                            00/00
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="aviso-simulacao">
+
+                    ⚠️ Pagamento somente para
+                    simulação do projeto.
+
+                    <br>
+
+                    Não utilize dados reais.
+
+                </div>
+
+
+                <div class="campos-cartao">
+
+                    <div class="campo-pagamento">
+
+                        <label>
+                            Número do cartão
+                        </label>
+
+                        <input
+                            type="text"
+                            id="numero-cartao"
+                            maxlength="19"
+                            placeholder="0000 0000 0000 0000"
+                            oninput="atualizarCartao()">
+
+                    </div>
+
+
+                    <div class="campo-pagamento">
+
+                        <label>
+                            Nome no cartão
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome-cartao"
+                            maxlength="30"
+                            placeholder="NOME DO CLIENTE"
+                            oninput="atualizarCartao()">
+
+                    </div>
+
+
+                    <div class="linha-cartao">
+
+                        <div class="campo-pagamento">
+
+                            <label>
+                                Validade
+                            </label>
+
+                            <input
+                                type="text"
+                                id="validade-cartao"
+                                maxlength="5"
+                                placeholder="MM/AA"
+                                oninput="atualizarCartao()">
+
+                        </div>
+
+
+                        <div class="campo-pagamento">
+
+                            <label>
+                                CVV
+                            </label>
+
+                            <input
+                                type="password"
+                                id="cvv-cartao"
+                                maxlength="3"
+                                placeholder="000">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        atualizarCartao();
+
+    }
+
+
+    else if (pagamento === "PIX") {
+
+        area.innerHTML = `
+
+            <div class="pagamento-pix">
+
+                <h2 class="pix-titulo">
+                    💠 Pagamento via PIX
+                </h2>
+
+                <p>
+                    Informe uma chave PIX de teste.
+                </p>
+
+
+                <div class="pix-qr"></div>
+
+
+                <p class="pix-valor">
+                    Valor: R$ ${obterTotalFinal().toFixed(2).replace(".", ",")}
+                </p>
+
+
+                <input
+                    type="text"
+                    id="chave-pix"
+                    class="pix-chave"
+                    placeholder="Digite uma chave PIX de teste">
+
+
+                <button
+                    type="button"
+                    class="botao-copiar"
+                    onclick="copiarChavePix()">
+
+                    📋 Copiar chave PIX
+
+                </button>
+
+
+                <div class="aviso-simulacao">
+
+                    ⚠️ PIX simulado somente para
+                    demonstração do TCC.
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if (pagamento === "Boleto") {
+
+        area.innerHTML = `
+
+            <div class="pagamento-boleto">
+
+                <h2>
+                    🧾 Boleto bancário
+                </h2>
+
+                <p>
+                    Ao finalizar o pedido, o boleto
+                    simulado será gerado.
+                </p>
+
+
+                <div class="aviso-simulacao">
+
+                    O boleto abaixo será criado
+                    automaticamente ao finalizar.
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    else {
+
+        area.innerHTML = "";
+
+    }
+}
+    function atualizarCartao() {
+
+    let numero = document.getElementById("numero-cartao");
+    let nome = document.getElementById("nome-cartao");
+    let validade = document.getElementById("validade-cartao");
+
+    let numeroVisual =
+        document.getElementById("cartao-numero-visual");
+
+    let nomeVisual =
+        document.getElementById("cartao-nome-visual");
+
+    let validadeVisual =
+        document.getElementById("cartao-validade-visual");
+
+
+    if (!numero || !nome || !validade) {
+        return;
+    }
+
+
+    let numeroFormatado =
+        numero.value
+        .replace(/\D/g, "")
+        .replace(/(\d{4})(?=\d)/g, "$1 ");
+
+    numero.value = numeroFormatado;
+
+
+    let somenteNumeros =
+        numeroFormatado.replace(/\D/g, "");
+
+
+    if (somenteNumeros.length >= 4) {
+
+        let ultimos =
+            somenteNumeros.slice(-4);
+
+        numeroVisual.innerText =
+            "•••• •••• •••• " + ultimos;
+
+    } else {
+
+        numeroVisual.innerText =
+            "•••• •••• •••• ••••";
+
+    }
+
+
+    if (nome.value.trim() !== "") {
+
+        nomeVisual.innerText =
+            nome.value.toUpperCase();
+
+    } else {
+
+        nomeVisual.innerText =
+            "NOME DO CLIENTE";
+
+    }
+
+
+    if (validade.value.trim() !== "") {
+
+        validadeVisual.innerText =
+            validade.value;
+
+    } else {
+
+        validadeVisual.innerText =
+            "00/00";
+
+    }
 }
     
 </script>
