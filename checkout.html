@@ -2587,6 +2587,315 @@ function selecionarPagamento(tipo) {
 
     }
 }
+
+ function copiarChavePix() {
+
+    let campo =
+        document.getElementById("chave-pix");
+
+    if (!campo || campo.value.trim() === "") {
+
+        alert(
+            "Digite primeiro uma chave PIX de teste."
+        );
+
+        return;
+    }
+
+
+    navigator.clipboard.writeText(
+        campo.value
+    );
+
+    alert(
+        "Chave PIX copiada!"
+    );
+}
+  function obterTotalFinal() {
+
+    let elemento =
+        document.getElementById("total-final");
+
+    if (!elemento) {
+
+        let carrinho =
+            JSON.parse(
+                localStorage.getItem("carrinho")
+            ) || [];
+
+        return carrinho.reduce(function(total, item) {
+
+            return total +
+                (Number(item.preco) * Number(item.quantidade || 1));
+
+        }, 0);
+    }
+
+
+    let valor =
+        elemento.innerText
+        .replace("R$", "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .trim();
+
+
+    return Number(valor) || 0;
+}
+  function gerarBoleto() {
+
+    let total =
+        obterTotalFinal();
+
+    let data =
+        new Date();
+
+    data.setDate(
+        data.getDate() + 3
+    );
+
+    let vencimento =
+        data.toLocaleDateString("pt-BR");
+
+
+    return `
+
+        <div class="comprovante-pagamento">
+
+            <h2>
+                🧾 Boleto gerado
+            </h2>
+
+
+            <div class="boleto">
+
+                <div class="boleto-topo">
+
+                    <div class="boleto-logo">
+                        👑 REI DA BOLA
+                    </div>
+
+                    <div class="boleto-simulacao">
+                        BOLETO BANCÁRIO<br>
+                        SIMULAÇÃO
+                    </div>
+
+                </div>
+
+
+                <div class="boleto-dados">
+
+                    <div>
+
+                        <span class="boleto-label">
+                            Valor do pedido
+                        </span>
+
+                        <strong class="boleto-valor">
+
+                            R$
+                            ${total.toFixed(2).replace(".", ",")}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="boleto-label">
+                            Vencimento
+                        </span>
+
+                        <strong>
+
+                            ${vencimento}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="codigo-barras"></div>
+
+
+                <div class="linha-digitavel">
+
+                    00190.00009 01234.567890
+                    12345.678901 2 98760000025970
+
+                </div>
+
+
+                <div class="boleto-aviso">
+
+                    ⚠️ Este é um boleto de
+                    <strong>SIMULAÇÃO</strong>
+                    para o projeto Rei da Bola.
+
+                    <br>
+
+                    Não possui validade para
+                    pagamento real.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+ function gerarComprovanteCartao() {
+
+    let total =
+        obterTotalFinal();
+
+    let numero =
+        document.getElementById(
+            "numero-cartao"
+        );
+
+    let nome =
+        document.getElementById(
+            "nome-cartao"
+        );
+
+
+    let numeroFinal =
+        numero.value
+        .replace(/\D/g, "")
+        .slice(-4);
+
+
+    return `
+
+        <div class="comprovante-pagamento">
+
+            <h2>
+                💳 Pagamento com cartão
+            </h2>
+
+
+            <div class="comprovante-linha">
+
+                <span>
+                    Cliente
+                </span>
+
+                <strong>
+                    ${nome.value.toUpperCase()}
+                </strong>
+
+            </div>
+
+
+            <div class="comprovante-linha">
+
+                <span>
+                    Cartão
+                </span>
+
+                <strong>
+                    •••• •••• •••• ${numeroFinal}
+                </strong>
+
+            </div>
+
+
+            <div class="comprovante-linha">
+
+                <span>
+                    Valor
+                </span>
+
+                <strong class="comprovante-destaque">
+
+                    R$
+                    ${total.toFixed(2).replace(".", ",")}
+
+                </strong>
+
+            </div>
+
+
+            <div class="boleto-aviso">
+
+                ⚠️ Pagamento aprovado apenas como
+                <strong>SIMULAÇÃO</strong> do TCC.
+
+            </div>
+
+        </div>
+
+    `;
+}
+  function gerarComprovantePix() {
+
+    let total =
+        obterTotalFinal();
+
+    let chave =
+        document.getElementById(
+            "chave-pix"
+        );
+
+
+    return `
+
+        <div class="comprovante-pagamento">
+
+            <h2>
+                💠 Pagamento via PIX
+            </h2>
+
+
+            <div class="pix-qr"></div>
+
+
+            <div class="comprovante-linha">
+
+                <span>
+                    Chave PIX
+                </span>
+
+                <strong>
+                    ${chave.value}
+                </strong>
+
+            </div>
+
+
+            <div class="comprovante-linha">
+
+                <span>
+                    Valor
+                </span>
+
+                <strong class="comprovante-destaque">
+
+                    R$
+                    ${total.toFixed(2).replace(".", ",")}
+
+                </strong>
+
+            </div>
+
+
+            <div class="boleto-aviso">
+
+                ⚠️ PIX gerado apenas como
+                <strong>SIMULAÇÃO</strong>
+                para o TCC.
+
+            </div>
+
+        </div>
+
+    `;
+}
     
 </script>
 
