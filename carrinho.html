@@ -1,11 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Carrinho</title>
+<title>Carrinho - Rei da Bola</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header>
@@ -17,139 +17,336 @@
 
 <h2 id="total"></h2>
 
-<h3>Forma de Pagamento</h3>
-
-<div class="pagamento-box">
-    <h3>💳 Forma de Pagamento</h3>
-
-    <select id="pagamento">
-        <option value="">Selecione</option>
-        <option value="PIX">PIX</option>
-        <option value="Cartão">Cartão</option>
-        <option value="Boleto">Boleto</option>
-    </select>
-</div>
-
 <button class="finalizar-btn" onclick="finalizarCompra()">
     Finalizar Compra
 </button>
 
 <script>
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+let carrinho =
+    JSON.parse(localStorage.getItem("carrinho")) || [];
+
+
+/* ========================================
+   MOSTRAR CARRINHO
+   ======================================== */
 
 function render(){
-    let lista = document.getElementById("lista");
+
+    let lista =
+        document.getElementById("lista");
+
     lista.innerHTML = "";
 
     let total = 0;
 
-    carrinho.forEach((item,i)=>{
 
-        // evita erro com itens antigos
-        if(!item.qtd) item.qtd = 1;
-        if(!item.tamanho) item.tamanho = "";
+    carrinho.forEach((item, i) => {
 
-        let li = document.createElement("li");
+        /* Evita erro com itens antigos */
 
-        li.innerHTML = `<img src="${item.imagem}" width="90">
+        if(!item.qtd)
+            item.qtd = 1;
 
-<br>
+        if(!item.tamanho)
+            item.tamanho = "";
 
-<strong>${item.nome}</strong>
-        <strong>${item.nome}</strong>
 
-        <div>
-            <button onclick="menos(${i})">-</button>
-            ${item.qtd}
-            <button onclick="mais(${i})">+</button>
-        </div>
+        let li =
+            document.createElement("li");
 
-        <!-- TAMANHO -->
-        <select onchange="mudarTamanho(${i}, this.value)">
-            <option value="">Tamanho</option>
-            <option ${item.tamanho=="P"?"selected":""}>P</option>
-            <option ${item.tamanho=="M"?"selected":""}>M</option>
-            <option ${item.tamanho=="G"?"selected":""}>G</option>
-            <option ${item.tamanho=="GG"?"selected":""}>GG</option>
-            <option ${item.tamanho=="34"?"selected":""}>34</option>
-            <option ${item.tamanho=="35"?"selected":""}>35</option>
-            <option ${item.tamanho=="36"?"selected":""}>36</option>
-            <option ${item.tamanho=="37"?"selected":""}>37</option>
-            <option ${item.tamanho=="38"?"selected":""}>38</option>
-            <option ${item.tamanho=="39"?"selected":""}>39</option>
-            <option ${item.tamanho=="40"?"selected":""}>40</option>
-            <option ${item.tamanho=="41"?"selected":""}>41</option>
-            <option ${item.tamanho=="42"?"selected":""}>42</option>
-            <option ${item.tamanho=="43"?"selected":""}>43</option>
-            <option ${item.tamanho=="44"?"selected":""}>44</option>
-            <option ${item.tamanho=="45"?"selected":""}>45</option>
-        </select>
 
-        <br>
+        li.innerHTML = `
 
-        R$ ${(item.preco * item.qtd).toFixed(2)}
+            <img
+                src="${item.imagem}"
+                width="90"
+            >
 
-        <button onclick="remover(${i})">❌</button>
+            <br>
+
+            <strong>
+                ${item.nome}
+            </strong>
+
+
+            <div>
+
+                <button
+                    onclick="menos(${i})"
+                >
+                    -
+                </button>
+
+                ${item.qtd}
+
+                <button
+                    onclick="mais(${i})"
+                >
+                    +
+                </button>
+
+            </div>
+
+
+            <!-- TAMANHO -->
+
+            <select
+                onchange="mudarTamanho(${i}, this.value)"
+            >
+
+                <option value="">
+                    Tamanho
+                </option>
+
+                <option
+                    ${item.tamanho=="P"?"selected":""}
+                >
+                    P
+                </option>
+
+                <option
+                    ${item.tamanho=="M"?"selected":""}
+                >
+                    M
+                </option>
+
+                <option
+                    ${item.tamanho=="G"?"selected":""}
+                >
+                    G
+                </option>
+
+                <option
+                    ${item.tamanho=="GG"?"selected":""}
+                >
+                    GG
+                </option>
+
+
+                <option
+                    ${item.tamanho=="34"?"selected":""}
+                >
+                    34
+                </option>
+
+                <option
+                    ${item.tamanho=="35"?"selected":""}
+                >
+                    35
+                </option>
+
+                <option
+                    ${item.tamanho=="36"?"selected":""}
+                >
+                    36
+                </option>
+
+                <option
+                    ${item.tamanho=="37"?"selected":""}
+                >
+                    37
+                </option>
+
+                <option
+                    ${item.tamanho=="38"?"selected":""}
+                >
+                    38
+                </option>
+
+                <option
+                    ${item.tamanho=="39"?"selected":""}
+                >
+                    39
+                </option>
+
+                <option
+                    ${item.tamanho=="40"?"selected":""}
+                >
+                    40
+                </option>
+
+                <option
+                    ${item.tamanho=="41"?"selected":""}
+                >
+                    41
+                </option>
+
+                <option
+                    ${item.tamanho=="42"?"selected":""}
+                >
+                    42
+                </option>
+
+                <option
+                    ${item.tamanho=="43"?"selected":""}
+                >
+                    43
+                </option>
+
+                <option
+                    ${item.tamanho=="44"?"selected":""}
+                >
+                    44
+                </option>
+
+                <option
+                    ${item.tamanho=="45"?"selected":""}
+                >
+                    45
+                </option>
+
+            </select>
+
+
+            <br>
+
+
+            R$
+            ${(item.preco * item.qtd)
+                .toFixed(2)
+                .replace(".", ",")
+            }
+
+
+            <button
+                onclick="remover(${i})"
+            >
+                ❌
+            </button>
+
         `;
+
 
         lista.appendChild(li);
 
-        total += item.preco * item.qtd;
+
+        total +=
+            item.preco * item.qtd;
+
     });
 
-    document.getElementById("total").innerText =
-        "Total: R$ " + total.toFixed(2);
+
+    document
+        .getElementById("total")
+        .innerText =
+            "Total: R$ " +
+            total
+                .toFixed(2)
+                .replace(".", ",");
+
 }
+
+
+/* ========================================
+   ALTERAR TAMANHO
+   ======================================== */
 
 function mudarTamanho(i, valor){
-    carrinho[i].tamanho = valor;
+
+    carrinho[i].tamanho =
+        valor;
+
     salvar();
+
 }
+
+
+/* ========================================
+   AUMENTAR QUANTIDADE
+   ======================================== */
 
 function mais(i){
+
     carrinho[i].qtd++;
+
     salvar();
+
 }
+
+
+/* ========================================
+   DIMINUIR QUANTIDADE
+   ======================================== */
 
 function menos(i){
+
     if(carrinho[i].qtd > 1){
+
         carrinho[i].qtd--;
+
     } else {
+
         carrinho.splice(i,1);
+
     }
+
     salvar();
+
 }
+
+
+/* ========================================
+   REMOVER PRODUTO
+   ======================================== */
 
 function remover(i){
+
     carrinho.splice(i,1);
+
     salvar();
+
 }
 
+
+/* ========================================
+   SALVAR CARRINHO
+   ======================================== */
+
 function salvar(){
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    localStorage.setItem(
+        "carrinho",
+        JSON.stringify(carrinho)
+    );
+
     render();
+
 }
+
+
+/* ========================================
+   FINALIZAR COMPRA
+   ======================================== */
 
 function finalizarCompra(){
 
     let carrinhoAtual =
-        JSON.parse(localStorage.getItem("carrinho")) || [];
+        JSON.parse(
+            localStorage.getItem("carrinho")
+        ) || [];
+
 
     if(carrinhoAtual.length === 0){
 
-        alert("Seu carrinho está vazio!");
+        alert(
+            "Seu carrinho está vazio!"
+        );
 
         return;
+
     }
 
-    window.location.href = "checkout.html";
-}
-    
-render();
-</script>
 
-<div id="mensagem-compra"></div>
+    window.location.href =
+        "checkout.html";
+
+}
+
+
+render();
+
+</script>
 
 </body>
 </html>
-```
