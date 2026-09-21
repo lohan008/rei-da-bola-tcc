@@ -1509,175 +1509,173 @@ let cupomAplicado = "";
 
 function finalizarPedido() {
 
+    // ==============================
+    // DADOS DE ENTREGA
+    // ==============================
+
     let nome = document.getElementById("nome").value.trim();
     let cep = document.getElementById("cep").value.trim();
     let endereco = document.getElementById("endereco").value.trim();
     let numero = document.getElementById("numero").value.trim();
     let cidade = document.getElementById("cidade").value.trim();
     let estado = document.getElementById("estado").value;
+
+    // ==============================
+    // FORMA DE PAGAMENTO
+    // ==============================
+
     let pagamento = document.getElementById("pagamento").value;
 
-
-    if (carrinho.length === 0) {
-
-        alert("Seu carrinho está vazio!");
+    if (
+        !nome ||
+        !cep ||
+        !endereco ||
+        !numero ||
+        !cidade ||
+        !estado
+    ) {
+        alert("Preencha todos os dados de entrega.");
         return;
-
     }
 
-
-    if (nome === "") {
-
-        alert("Digite seu nome.");
-        return;
-
-    }
-
-
-    if (cep === "") {
-
-        alert("Digite seu CEP.");
-        return;
-
-    }
-
-
-    if (endereco === "") {
-
-        alert("Digite seu endereço.");
-        return;
-
-    }
-
-
-    if (numero === "") {
-
-        alert("Digite o número.");
-        return;
-
-    }
-
-
-    if (cidade === "") {
-
-        alert("Digite sua cidade.");
-        return;
-
-    }
-
-
-    if (estado === "") {
-
-        alert("Selecione seu estado.");
-        return;
-
-    }
-
-
-    if (pagamento === "") {
-
+    if (!pagamento) {
         alert("Selecione uma forma de pagamento.");
         return;
+    }
+
+    // ==============================
+    // VALIDAÇÃO DO CARTÃO
+    // ==============================
+
+    if (pagamento === "Cartão") {
+
+        let numeroCartao =
+            document.getElementById("numero-cartao");
+
+        let nomeCartao =
+            document.getElementById("nome-cartao");
+
+        let validadeCartao =
+            document.getElementById("validade-cartao");
+
+        let cvvCartao =
+            document.getElementById("cvv-cartao");
+
+        if (
+            !numeroCartao ||
+            !nomeCartao ||
+            !validadeCartao ||
+            !cvvCartao
+        ) {
+            alert("Os campos do cartão não foram encontrados.");
+            return;
+        }
+
+        if (
+            !numeroCartao.value.trim() ||
+            !nomeCartao.value.trim() ||
+            !validadeCartao.value.trim() ||
+            !cvvCartao.value.trim()
+        ) {
+            alert("Preencha todos os dados do cartão.");
+            return;
+        }
+    }
+
+    // ==============================
+    // VALIDAÇÃO DO PIX
+    // ==============================
+
+    if (pagamento === "PIX") {
+
+        let chavePix =
+            document.getElementById("chave-pix");
+
+        if (!chavePix || !chavePix.value.trim()) {
+            alert("Informe uma chave PIX de teste.");
+            return;
+        }
+    }
+
+    // ==============================
+    // CALCULAR FRETE
+    // ==============================
+
+    calcularFrete();
+
+    // ==============================
+    // VALOR FINAL
+    // ==============================
+
+    let totalFinal = obterTotalFinal();
+
+    // ==============================
+    // ESCONDER CHECKOUT
+    // ==============================
+
+    document.querySelector(".checkout-container").style.display = "none";
+
+    // ==============================
+    // MOSTRAR RESULTADO DO PAGAMENTO
+    // ==============================
+
+    let resultado =
+        document.getElementById("resultado-pagamento");
+
+    resultado.style.display = "block";
+
+    // ==============================
+    // CARTÃO
+    // ==============================
+
+    if (pagamento === "Cartão") {
+
+        resultado.innerHTML =
+            gerarComprovanteCartao();
 
     }
 
+    // ==============================
+    // PIX
+    // ==============================
 
-    /* ========================================
-       CALCULAR DESCONTO
-       ======================================== */
+    else if (pagamento === "PIX") {
 
-    let descontoFinal = 0;
-
-    let freteFinal = frete;
-
-
-    /* FRETE GRÁTIS */
-
-    if (
-        cupomAplicado === "FRETEGRATIS" ||
-        cupomAplicado === "PRIMEIRACOMPRA"
-    ) {
-
-        freteFinal = 0;
+        resultado.innerHTML =
+            gerarComprovantePix();
 
     }
 
+    // ==============================
+    // BOLETO
+    // ==============================
 
-    /* DESCONTOS */
+    else if (pagamento === "Boleto") {
 
-    if (cupomAplicado === "REIDABOLA5") {
-
-        descontoFinal = subtotal * 0.05;
-
-    }
-
-    else if (cupomAplicado === "REIDABOLA10") {
-
-        descontoFinal = subtotal * 0.10;
+        resultado.innerHTML =
+            gerarBoleto();
 
     }
 
-    else if (cupomAplicado === "REIDABOLA20") {
+    // ==============================
+    // FINALIZAÇÃO
+    // ==============================
 
-        descontoFinal = subtotal * 0.20;
+    setTimeout(function() {
 
-    }
+        resultado.style.display = "none";
 
-    else if (cupomAplicado === "REIDABOLA50") {
+        let confirmado =
+            document.getElementById("pedido-confirmado");
 
-        descontoFinal = subtotal * 0.50;
+        confirmado.style.display = "block";
 
-    }
+        localStorage.removeItem("carrinho");
 
-
-    /* TOTAL FINAL */
-
-    let totalFinal =
-        subtotal + freteFinal - descontoFinal;
-
-
-    /* ========================================
-       CONFIRMAÇÃO
-       ======================================== */
-
-    alert(
-        "Pedido confirmado com sucesso! 👑\n\n" +
-        "Pagamento: " +
-        pagamento +
-        "\nTotal: R$ " +
-        totalFinal.toFixed(2).replace(".", ",")
-    );
-
-
-    localStorage.removeItem("carrinho");
-
-
-    document
-        .querySelector(".checkout-titulo")
-        .style.display = "none";
-
-
-    document
-        .querySelectorAll(".checkout-box")
-        .forEach(function(box) {
-
-            box.style.display = "none";
-
-        });
-
-
-    document
-        .querySelector(".voltar-carrinho")
-        .style.display = "none";
-
-
-    document
-        .getElementById("pedido-confirmado")
-        .style.display = "block";
-
+    }, 1500);
 }
 
-
+    
 /* ========================================
    APLICAR CUPOM
    ======================================== */
